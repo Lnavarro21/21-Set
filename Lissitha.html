@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Lissitha 💛💙</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:ital@1&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            font-family: 'Playfair Display', serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 30px rgba(255, 255, 0, 0.3);
+        }
+        
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: #ffcc00;
+            text-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+        }
+        
+        h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            margin: 25px 0;
+            color: #4fc3f7;
+        }
+        
+        .message {
+            text-align: left;
+            line-height: 1.8;
+            font-size: 1.2rem;
+            margin: 25px 0;
+            padding: 20px;
+            border-radius: 15px;
+            background: rgba(0, 0, 0, 0.2);
+            border-left: 4px solid #ffcc00;
+        }
+        
+        .signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            margin-top: 30px;
+            color: #4fc3f7;
+            text-align: right;
+        }
+        
+        .flower {
+            position: absolute;
+            z-index: 1;
+            font-size: 2rem;
+            opacity: 0.7;
+            animation: float 8s infinite ease-in-out;
+        }
+        
+        .yellow {
+            color: #ffcc00;
+            text-shadow: 0 0 10px rgba(255, 204, 0, 0.7);
+        }
+        
+        .blue {
+            color: #4fc3f7;
+            text-shadow: 0 0 10px rgba(79, 195, 247, 0.7);
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            25% {
+                transform: translate(10px, 15px) rotate(5deg);
+            }
+            50% {
+                transform: translate(-5px, 20px) rotate(-5deg);
+            }
+            75% {
+                transform: translate(-10px, 5px) rotate(3deg);
+            }
+        }
+        
+        .hearts {
+            position: absolute;
+            font-size: 1.5rem;
+            opacity: 0;
+            animation: fall 10s linear infinite;
+        }
+        
+        @keyframes fall {
+            0% {
+                top: -10%;
+                opacity: 1;
+            }
+            100% {
+                top: 100%;
+                opacity: 0;
+            }
+        }
+        
+        .music-control {
+            margin-top: 20px;
+            background: rgba(255, 204, 0, 0.2);
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .music-control:hover {
+            background: rgba(255, 204, 0, 0.4);
+        }
+        
+        .youtube-link {
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .message {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Flores animadas -->
+    <div id="flowers-container"></div>
+    
+    <!-- Contenedor principal -->
+    <div class="container">
+        <h1>💛 Para Lissitha 💙</h1>
+        
+        <h2>21 de Septiembre</h2>
+        
+        <div class="message">
+            <p>Para la chica más linda del mundo... si tú!! Lissitha 💛</p>
+            <p>Capaz te dieron tus flores amarillas o quizás no jejeje... la verdad nunca di esos regalos y pos tampoco hoy tuve la oportunidad de verte, peeero aquí te dejo este pequeño regalito.</p>
+            <p>Quiero que sepas que eres una chica muy especial para mí y pues de corazón espero que la vida poco a poco te premie con cosas bonitas porque te mereces lo mejor del mundo.</p>
+        </div>
+        
+        <div class="signature">Con cariño 💙</div>
+        
+        <button class="music-control" onclick="toggleMusic()">🎵 Reproducir música</button>
+        
+        <!-- Enlace de YouTube (oculto) -->
+        <div class="youtube-link">
+            <iframe width="0" height="0" src="https://www.youtube.com/embed/DiNl8teGXcY?autoplay=1&loop=1&playlist=DiNl8teGXcY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+    </div>
+    
+    <script>
+        // Variables para controlar la música
+        let isPlaying = false;
+        
+        // Crear flores animadas (muchas más flores amarillas)
+        function createFlowers() {
+            const flowersContainer = document.getElementById('flowers-container');
+            const flowerSymbols = ['🌼', '🌻', '💛', '✨'];
+            const colors = ['yellow', 'yellow', 'yellow', 'yellow', 'blue']; // Más probabilidad de amarillo
+            
+            // Crear muchas más flores
+            for (let i = 0; i < 80; i++) {
+                const flower = document.createElement('div');
+                flower.className = `flower ${colors[Math.floor(Math.random() * colors.length)]}`;
+                flower.innerHTML = flowerSymbols[Math.floor(Math.random() * flowerSymbols.length)];
+                
+                // Posición aleatoria
+                flower.style.left = `${Math.random() * 100}%`;
+                flower.style.top = `${Math.random() * 100}%`;
+                
+                // Tamaño aleatorio (más variación)
+                const size = Math.random() * 25 + 20;
+                flower.style.fontSize = `${size}px`;
+                
+                // Retraso aleatorio en la animación
+                flower.style.animationDelay = `${Math.random() * 5}s`;
+                
+                // Duración aleatoria de animación
+                flower.style.animationDuration = `${Math.random() * 10 + 5}s`;
+                
+                flowersContainer.appendChild(flower);
+            }
+            
+            // Crear corazones que caen
+            for (let i = 0; i < 20; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'hearts';
+                heart.innerHTML = Math.random() > 0.5 ? '💛' : '💙';
+                heart.style.left = `${Math.random() * 100}%`;
+                heart.style.animationDelay = `${Math.random() * 5}s`;
+                heart.style.animationDuration = `${Math.random() * 5 + 5}s`;
+                document.body.appendChild(heart);
+            }
+            
+            // Crear efecto de flores cayendo continuamente
+            setInterval(() => {
+                const flower = document.createElement('div');
+                flower.className = 'flower yellow';
+                flower.innerHTML = '🌼';
+                flower.style.left = `${Math.random() * 100}%`;
+                flower.style.fontSize = `${Math.random() * 20 + 15}px`;
+                flower.style.animationDuration = `${Math.random() * 5 + 8}s`;
+                
+                flowersContainer.appendChild(flower);
+                
+                // Eliminar después de la animación
+                setTimeout(() => {
+                    flower.remove();
+                }, 15000);
+            }, 800);
+        }
+        
+        // Controlar la música
+        function toggleMusic() {
+            const button = document.querySelector('.music-control');
+            const iframe = document.querySelector('iframe');
+            
+            if (isPlaying) {
+                // Pausar música (no es posible directamente con iframe de YouTube)
+                iframe.src = "";
+                button.textContent = '🎵 Reproducir música';
+            } else {
+                // Reproducir música
+                iframe.src = "https://www.youtube.com/embed/DiNl8teGXcY?autoplay=1&loop=1&playlist=DiNl8teGXcY";
+                button.textContent = '⏸️ Pausar música';
+            }
+            
+            isPlaying = !isPlaying;
+        }
+        
+        // Inicializar
+        window.onload = function() {
+            createFlowers();
+            
+            // Reproducir automáticamente al hacer clic en cualquier parte
+            document.body.addEventListener('click', function() {
+                if (!window.musicInitialized) {
+                    const iframe = document.querySelector('iframe');
+                    iframe.src = "https://www.youtube.com/embed/DiNl8teGXcY?autoplay=1&loop=1&playlist=DiNl8teGXcY";
+                    document.querySelector('.music-control').textContent = '⏸️ Pausar música';
+                    isPlaying = true;
+                    window.musicInitialized = true;
+                }
+            });
+        }
+    </script>
+</body>
+</html>
